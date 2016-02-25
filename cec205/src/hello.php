@@ -3,10 +3,17 @@ namespace Hello;
 require __DIR__ . '/../vendor/autoload.php';
 use djchen\OAuth2\Client\Provider\Fitbit;
 
+// Constant clientId
+const CLIENT_ID = '227HB2';
+// Constant Client Secret
+const CLIENT_SECRET = 'b62af360ee95e6f8ab519f16f7a9fdef';
+// Constant redirect URI
+const REDIRECT_URI = 'http://localhost/beat_mvp/cec205/src/congrats.php';
+
 $provider = new Fitbit([
-    'clientId'          => '227HB2',
-    'clientSecret'      => 'b62af360ee95e6f8ab519f16f7a9fdef',
-    'redirectUri'       => 'http://localhost/cec205/congrats.php'
+    'clientId'          => CLIENT_ID,
+    'clientSecret'      => CLIENT_SECRET,
+    'redirectUri'       => REDIRECT_URI
 ]);
 
 // start the session
