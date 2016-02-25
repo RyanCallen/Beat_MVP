@@ -524,7 +524,6 @@ abstract class AbstractProvider
     public function getAccessToken($grant, array $options = [])
     {
         $grant = $this->verifyGrant($grant);
-
         $params = [
             'client_id'     => $this->clientId,
             'client_secret' => $this->clientSecret,
@@ -616,7 +615,6 @@ abstract class AbstractProvider
     {
         $response = $this->sendRequest($request);
         $parsed = $this->parseResponse($response);
-
         $this->checkResponse($response, $parsed);
 
         return $parsed;
