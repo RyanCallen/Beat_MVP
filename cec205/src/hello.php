@@ -8,7 +8,8 @@ const CLIENT_ID = '227HB2';
 // Constant Client Secret
 const CLIENT_SECRET = 'b62af360ee95e6f8ab519f16f7a9fdef';
 // Constant redirect URI
-const REDIRECT_URI = 'http://localhost/beat_mvp/cec205/src/congrats.php';
+const REDIRECT_URI = 'http://localhost/beat_mvp/cec205/src/hello.php';
+$token = "";
 
 $provider = new Fitbit([
     'clientId'          => CLIENT_ID,
@@ -16,6 +17,17 @@ $provider = new Fitbit([
     'redirectUri'       => REDIRECT_URI
 ]);
 
+$existingAccessToken = $token;
+
+if ($existingAccessToken != "") {
+    if ($existingAccessToken != "" || $existingAccessToken->hasExpired()) {
+        $newAccessToken = $provider->getAccessToken('refresh_token', [
+            'refresh_token' => $existingAccessToken->getRefreshToken()
+        ]);
+        // Reset the token
+        $token = $newAccessToken;
+    }
+}
 // start the session
 session_start();
 
@@ -40,13 +52,13 @@ if (!isset($_GET['code'])) {
     exit('Invalid state');
 
 } else {
-
     try {
-
         // Try to get an access token using the authorization code grant.
         $accessToken = $provider->getAccessToken('authorization_code', [
             'code' => $_GET['code']
         ]);
+        // Set the new token to be the access token
+        $token = $accessToken;
 
         // We have an access token, which we may use in authenticated
         // requests against the service provider's API.
@@ -54,29 +66,14 @@ if (!isset($_GET['code'])) {
         echo $accessToken->getRefreshToken() . "\n";
         echo $accessToken->getExpires() . "\n";
         echo ($accessToken->hasExpired() ? 'expired' : 'not expired') . "\n";
-
         // Using the access token, we may look up details about the
         // resource owner.
-        $resourceOwner = $provider->getResourceOwner($accessToken);
 
-        var_export($resourceOwner->toArray());
-
-        // The provider provides a way to get an authenticated API request for
-        // the service, using the access token; it returns an object conforming
-        // to Psr\Http\Message\RequestInterface.
-        $request = $provider->getAuthenticatedRequest(
-            'GET',
-            'https://api.fitbit.com/1/user/-/profile.json',
-            $accessToken
-        );
-        // Make the authenticated API request and get the response.
-        //$response = $provider->getResponse($request);
+        header("Location: congrats.php?accessToken=".$accessToken);
 
     } catch (\League\OAuth2\Client\Provider\Exception\IdentityProviderException $e) {
-
         // Failed to get the access token or user details.
         exit($e->getMessage());
-
     }
 
 }
