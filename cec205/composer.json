@@ -1,7 +1,8 @@
 {
     "require": {
         "djchen/oauth2-fitbit": "^0.2.0",
-        "twbs/bootstrap": "^3.3"
+        "twbs/bootstrap": "^3.3",
+        "twig/twig": "^1.24"
 
     }
 }
