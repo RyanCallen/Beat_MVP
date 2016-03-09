@@ -25,8 +25,8 @@
       <file leaf-file-name="hello.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/hello.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.961538">
-              <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+            <state vertical-scroll-proportion="-15.769231">
+              <caret line="71" column="67" selection-start-line="71" selection-start-column="67" selection-end-line="71" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -35,18 +35,38 @@
       <file leaf-file-name="newUsers.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/newUsers.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.6153846">
+            <state vertical-scroll-proportion="0.0">
               <caret line="4" column="52" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="twigTest.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="twigTest.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/twigTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.02556391">
-              <caret line="1" column="44" selection-start-line="1" selection-start-column="44" selection-end-line="1" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="67" selection-start-line="8" selection-start-column="67" selection-end-line="8" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Dashboard.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Dashboard.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="aris.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/aris.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-39.307693">
+              <caret line="66" column="1" selection-start-line="66" selection-start-column="1" selection-end-line="66" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -55,7 +75,7 @@
       <file leaf-file-name="composer.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/composer.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.6037736">
+            <state vertical-scroll-proportion="0.0">
               <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
@@ -75,18 +95,31 @@
       <file leaf-file-name="congrats.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/congrats.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.9615384">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="-75.19231">
+              <caret line="115" column="12" selection-start-line="115" selection-start-column="12" selection-end-line="115" selection-end-column="12" />
+              <folding>
+                <marker date="1457562156969" expanded="true" signature="4140:4377" placeholder="..." />
+                <marker date="1457562156969" expanded="true" signature="4140:5360" placeholder="..." />
+                <marker date="1457562156969" expanded="true" signature="4159:4234" placeholder="/*...*/" />
+                <marker date="1457562156969" expanded="true" signature="4243:4258" placeholder="/*...*/" />
+                <marker date="1457562156969" expanded="true" signature="4283:4350" placeholder="[...]" />
+                <marker date="1457562156969" expanded="true" signature="4297:4321" placeholder="{...}" />
+                <marker date="1457562156969" expanded="true" signature="4454:4593" placeholder="{...}" />
+                <marker date="1457562156969" expanded="true" signature="4641:4726" placeholder="{&quot;segmentShowStroke&quot;: false...}" />
+                <marker date="1457562156969" expanded="true" signature="4886:4910" placeholder="/*...*/" />
+                <marker date="1457562156969" expanded="true" signature="4942:5209" placeholder="{...}" />
+                <marker date="1457562156969" expanded="true" signature="5015:5199" placeholder="[...]" />
+                <marker date="1457562156969" expanded="true" signature="5033:5184" placeholder="{&quot;fillColor&quot;: &quot;#77CAF3&quot;...}" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Fitbit.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/djchen/oauth2-fitbit/src/Provider/Fitbit.php">
+      <file leaf-file-name="profile.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/profile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.41203007">
+              <caret line="38" column="61" selection-start-line="38" selection-start-column="61" selection-end-line="38" selection-end-column="61" />
               <folding />
             </state>
           </provider>
@@ -114,10 +147,11 @@
         <option value="$PROJECT_DIR$/vendor/league/oauth2-client/src/Provider/AbstractProvider.php" />
         <option value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Client.php" />
         <option value="$PROJECT_DIR$/src/hello.php" />
-        <option value="$PROJECT_DIR$/src/congrats.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/src/newUsers.php" />
         <option value="$PROJECT_DIR$/src/twigTest.php" />
+        <option value="$PROJECT_DIR$/src/congrats.php" />
+        <option value="$PROJECT_DIR$/src/profile.php" />
       </list>
     </option>
   </component>
@@ -161,6 +195,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -209,8 +245,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -273,10 +307,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26066098" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26865673" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5021322" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -313,6 +347,83 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/vendor/djchen/oauth2-fitbit/src/Provider/Fitbit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hello.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/newUsers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="52" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/twigTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/styles/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/congrats.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding>
+            <marker date="1457562156969" expanded="true" signature="4140:4377" placeholder="..." />
+            <marker date="1457562156969" expanded="true" signature="4140:5360" placeholder="..." />
+            <marker date="1457562156969" expanded="true" signature="4159:4234" placeholder="/*...*/" />
+            <marker date="1457562156969" expanded="true" signature="4243:4258" placeholder="/*...*/" />
+            <marker date="1457562156969" expanded="true" signature="4283:4350" placeholder="[...]" />
+            <marker date="1457562156969" expanded="true" signature="4297:4321" placeholder="{...}" />
+            <marker date="1457562156969" expanded="true" signature="4454:4593" placeholder="{...}" />
+            <marker date="1457562156969" expanded="true" signature="4641:4726" placeholder="{&quot;segmentShowStroke&quot;: false...}" />
+            <marker date="1457562156969" expanded="true" signature="4886:4910" placeholder="/*...*/" />
+            <marker date="1457562156969" expanded="true" signature="4942:5209" placeholder="{...}" />
+            <marker date="1457562156969" expanded="true" signature="5015:5199" placeholder="[...]" />
+            <marker date="1457562156969" expanded="true" signature="5033:5184" placeholder="{&quot;fillColor&quot;: &quot;#77CAF3&quot;...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/djchen/oauth2-fitbit/src/Provider/Fitbit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/hello.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -333,7 +444,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1457562156969" expanded="true" signature="4140:4377" placeholder="..." />
+            <marker date="1457562156969" expanded="true" signature="4140:5360" placeholder="..." />
+            <marker date="1457562156969" expanded="true" signature="4159:4234" placeholder="/*...*/" />
+            <marker date="1457562156969" expanded="true" signature="4243:4258" placeholder="/*...*/" />
+            <marker date="1457562156969" expanded="true" signature="4283:4350" placeholder="[...]" />
+            <marker date="1457562156969" expanded="true" signature="4297:4321" placeholder="{...}" />
+            <marker date="1457562156969" expanded="true" signature="4454:4593" placeholder="{...}" />
+            <marker date="1457562156969" expanded="true" signature="4641:4726" placeholder="{&quot;segmentShowStroke&quot;: false...}" />
+            <marker date="1457562156969" expanded="true" signature="4886:4910" placeholder="/*...*/" />
+            <marker date="1457562156969" expanded="true" signature="4942:5209" placeholder="{...}" />
+            <marker date="1457562156969" expanded="true" signature="5015:5199" placeholder="[...]" />
+            <marker date="1457562156969" expanded="true" signature="5033:5184" placeholder="{&quot;fillColor&quot;: &quot;#77CAF3&quot;...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -357,7 +481,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
-          <folding />
+          <folding>
+            <marker date="1457562156969" expanded="true" signature="4140:4377" placeholder="..." />
+            <marker date="1457562156969" expanded="true" signature="4140:5360" placeholder="..." />
+            <marker date="1457562156969" expanded="true" signature="4159:4234" placeholder="/*...*/" />
+            <marker date="1457562156969" expanded="true" signature="4243:4258" placeholder="/*...*/" />
+            <marker date="1457562156969" expanded="true" signature="4283:4350" placeholder="[...]" />
+            <marker date="1457562156969" expanded="true" signature="4297:4321" placeholder="{...}" />
+            <marker date="1457562156969" expanded="true" signature="4454:4593" placeholder="{...}" />
+            <marker date="1457562156969" expanded="true" signature="4641:4726" placeholder="{&quot;segmentShowStroke&quot;: false...}" />
+            <marker date="1457562156969" expanded="true" signature="4886:4910" placeholder="/*...*/" />
+            <marker date="1457562156969" expanded="true" signature="4942:5209" placeholder="{...}" />
+            <marker date="1457562156969" expanded="true" signature="5015:5199" placeholder="[...]" />
+            <marker date="1457562156969" expanded="true" signature="5033:5184" placeholder="{&quot;fillColor&quot;: &quot;#77CAF3&quot;...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -504,7 +641,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.0936396">
           <caret line="253" column="6" selection-start-line="253" selection-start-column="6" selection-end-line="253" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -550,14 +686,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/league/oauth2-client/src/Provider/AbstractProvider.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.4611309">
-          <caret line="358" column="20" selection-start-line="358" selection-start-column="20" selection-end-line="358" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/djchen/oauth2-fitbit/src/Provider/Fitbit.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -576,40 +704,85 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6037736">
+        <state vertical-scroll-proportion="0.0">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/congrats.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9615384">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/newUsers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6153846">
-          <caret line="4" column="52" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/hello.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.961538">
-          <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="29" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/twigTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.02556391">
-          <caret line="1" column="44" selection-start-line="1" selection-start-column="44" selection-end-line="1" selection-end-column="44" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="67" selection-start-line="8" selection-start-column="67" selection-end-line="8" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/newUsers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="52" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/aris.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-39.307693">
+          <caret line="66" column="1" selection-start-line="66" selection-start-column="1" selection-end-line="66" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/league/oauth2-client/src/Provider/AbstractProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34586465">
+          <caret line="358" column="20" selection-start-line="358" selection-start-column="20" selection-end-line="358" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/hello.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.769231">
+          <caret line="71" column="67" selection-start-line="71" selection-start-column="67" selection-end-line="71" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/congrats.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-75.19231">
+          <caret line="115" column="12" selection-start-line="115" selection-start-column="12" selection-end-line="115" selection-end-column="12" />
+          <folding>
+            <marker date="1457562156969" expanded="true" signature="4140:4377" placeholder="..." />
+            <marker date="1457562156969" expanded="true" signature="4140:5360" placeholder="..." />
+            <marker date="1457562156969" expanded="true" signature="4159:4234" placeholder="/*...*/" />
+            <marker date="1457562156969" expanded="true" signature="4243:4258" placeholder="/*...*/" />
+            <marker date="1457562156969" expanded="true" signature="4283:4350" placeholder="[...]" />
+            <marker date="1457562156969" expanded="true" signature="4297:4321" placeholder="{...}" />
+            <marker date="1457562156969" expanded="true" signature="4454:4593" placeholder="{...}" />
+            <marker date="1457562156969" expanded="true" signature="4641:4726" placeholder="{&quot;segmentShowStroke&quot;: false...}" />
+            <marker date="1457562156969" expanded="true" signature="4886:4910" placeholder="/*...*/" />
+            <marker date="1457562156969" expanded="true" signature="4942:5209" placeholder="{...}" />
+            <marker date="1457562156969" expanded="true" signature="5015:5199" placeholder="[...]" />
+            <marker date="1457562156969" expanded="true" signature="5033:5184" placeholder="{&quot;fillColor&quot;: &quot;#77CAF3&quot;...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41203007">
+          <caret line="38" column="61" selection-start-line="38" selection-start-column="61" selection-end-line="38" selection-end-column="61" />
           <folding />
         </state>
       </provider>

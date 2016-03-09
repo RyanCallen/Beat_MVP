@@ -33,7 +33,12 @@ $request = $provider->getAuthenticatedRequest(
 );
 // Make the authenticated API request and get the response.
 $userData = $provider->getResponse($request);
-var_dump($userData);
+
+$name = $userData['user']['displayName'];
+$gender = $userData['user']['gender'];
+$heightInches = $userData['user']['height'] / 0.393701;
+$weight = $userData['user']['weight'] * 2.20462;
+
 echo "\n\n";
 
 $date = date("Y-m-d");
@@ -52,6 +57,7 @@ $request = $provider->getAuthenticatedRequest(
     "https://api.fitbit.com/1/user/-/activities/steps/date/today/1m.json",
     $accessToken
 );
+$sunScore = 170;
 // Make the authenticated API request and get the response.
 $monthActivity = $provider->getResponse($request);
 $monthActivityJson = json_encode($monthActivity);
@@ -82,7 +88,6 @@ echo "\n\n";
     </head>
     
     <body>
-        
         <!-- NAV BAR -->
         <nav class="navbar navbar-default">
           <div class="container-fluid">
@@ -96,20 +101,23 @@ echo "\n\n";
         
         <center>
             <div class="page-header">
-              <h1>SunScore Progress <small>Current Score: <b>176</b></small></h1>
+              <h1>SunScore Progress <small>Current Score: <b><?php echo $sunScore; ?></b></small></h1>
             </div>
             <canvas id="countries" height="200px" width="300px"></canvas>
             
             <div class="page-header">
               <h1>Your Competitions</h1>
             </div>
+
             
             <canvas id="income" width="300" height="200"></canvas>
             
             
             
         </center>
-            
+        <a class="navbar-brand" href="<?php echo "profile.php?accessToken=".$accessToken ?>">
+            PROFILE PAGE
+        </a>
     </body>
     
     <script>
@@ -118,12 +126,12 @@ echo "\n\n";
         /*DONUT GRAPH*/
         var donutData = [
             {
-                value: 24,
+                value: <?php echo (200 - $sunScore); ?>,
                 color:"#C2F6C9",
                 label: "Points to go"
             },
             {
-                value : 176,
+                value : <?php echo $sunScore; ?>,
                 color : "#5DD46D",
                 label: "Current Score"
             }
