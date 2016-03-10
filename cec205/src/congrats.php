@@ -26,20 +26,6 @@ $provider = new Fitbit([
 // the service, using the access token; it returns an object conforming
 // to Psr\Http\Message\RequestInterface.
 
-$request = $provider->getAuthenticatedRequest(
-    'GET',
-    'https://api.fitbit.com/1/user/-/profile.json',
-    $accessToken
-);
-// Make the authenticated API request and get the response.
-$userData = $provider->getResponse($request);
-
-$name = $userData['user']['displayName'];
-$gender = $userData['user']['gender'];
-$heightInches = $userData['user']['height'] / 0.393701;
-$weight = $userData['user']['weight'] * 2.20462;
-
-echo "\n\n";
 
 $date = date("Y-m-d");
 $request = $provider->getAuthenticatedRequest(
@@ -54,14 +40,56 @@ echo "\n\n";
 
 $request = $provider->getAuthenticatedRequest(
     'GET',
-    "https://api.fitbit.com/1/user/-/activities/steps/date/today/1m.json",
+    "https://api.fitbit.com/1/user/-/activities/steps/date/today/1w.json",
     $accessToken
 );
-$sunScore = 170;
+
 // Make the authenticated API request and get the response.
-$monthActivity = $provider->getResponse($request);
-$monthActivityJson = json_encode($monthActivity);
-//var_dump($monthActivityJson);
+$weekActivity = $provider->getResponse($request);
+$weeklySteps = 0;
+foreach($weekActivity["activities-steps"] as $dailySteps) {
+    $weeklySteps += intval($dailySteps['value']);
+}
+
+$request = $provider->getAuthenticatedRequest(
+    'GET',
+    'https://api.fitbit.com/1/user/-/profile.json',
+    $accessToken
+);
+// Make the authenticated API request and get the response.
+$userData = $provider->getResponse($request);
+
+$name = $userData['user']['displayName'];
+$gender = $userData['user']['gender'];
+$heightMeters = $userData['user']['height']/100;
+$weight = $userData['user']['weight'];
+
+$bmi = $weight/($heightMeters*$heightMeters);
+$sunScore = intval(($weeklySteps/10)/$bmi);
+$kyleSteps = 57340;
+$karenSteps = 49126;
+$joeSteps = 73072;
+$leadDiv = '<p>';
+if($weeklySteps > $joeSteps) {
+    $leadDiv.='Congratulations, you\'re in lead this week. Keep it up!';
+}
+else {
+    $leadDiv.='Step it up! You\'re '.($joeSteps - $weeklySteps).' steps from the lead!';
+}
+$leadDiv.='</p>';
+
+$barData = '{
+            labels : ["You","Kyle", "Karen","Joe"],
+            datasets : [
+                {
+                    fillColor : "#77CAF3",
+                    strokeColor : "#4D9DC4",
+                    data : ['.$weeklySteps.','.$kyleSteps.','.$karenSteps.','.$joeSteps.']
+                }
+
+            ]
+        }';
+
 echo "\n\n";
 ?>
 
@@ -111,10 +139,11 @@ echo "\n\n";
 
             
             <canvas id="income" width="300" height="200"></canvas>
-            
-            
-            
+
+
+            <?php echo $leadDiv ?>
         </center>
+
         <a class="navbar-brand" href="<?php echo "profile.php?accessToken=".$accessToken ?>">
             PROFILE PAGE
         </a>
@@ -126,7 +155,7 @@ echo "\n\n";
         /*DONUT GRAPH*/
         var donutData = [
             {
-                value: <?php echo (200 - $sunScore); ?>,
+                value: <?php echo (300 - $sunScore); ?>,
                 color:"#C2F6C9",
                 label: "Points to go"
             },
@@ -146,17 +175,7 @@ echo "\n\n";
         new Chart(countries).Doughnut(donutData, donutOptions);
         /**********************/
         
-        var barData = {
-            labels : ["Adam","Ryan","Michael"],
-            datasets : [
-                {
-                    fillColor : "#77CAF3",
-                    strokeColor : "#4D9DC4",
-                    data : [9513,6266,8427]
-                }
-
-            ]
-        }
+        var barData = <?php echo $barData ?>;
         
     
         var income = document.getElementById("income").getContext("2d");

@@ -51,5 +51,5 @@ $heightString = (intval($heightInches/12)).'\' '.($heightInches%12).'"';
     <li>heightInches = <?php echo $heightInches; ?></li>
     <li>weight = <?php echo $weight; ?></li>
     <li>heightString = <?php echo $heightString; ?></li>
-</ul>
+</ul>9
 </html>
