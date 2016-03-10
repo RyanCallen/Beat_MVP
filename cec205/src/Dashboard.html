@@ -8,6 +8,8 @@
         
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
         
+        <link href="/simple-sidebar.css" rel="stylesheet">
+        
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <!-- Optional theme -->
@@ -15,95 +17,84 @@
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+        
 
         <script src='Chart.min.js'></script>
         
     </head>
     
-    <body>
-        
-        <!-- NAV BAR -->
-        <nav class="navbar navbar-default">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="#">
-                BEAT <i class="fa fa-heartbeat" style="color:#B63131"></i>
-              </a>
-            </div>
-          </div>
-        </nav>
-        
-        <center>
-            <div class="page-header">
-              <h1>SunScore Progress <small>Current Score: <b>176</b></small></h1>
-            </div>
-            <canvas id="countries" height="300px" width="300px"></canvas>
-            
-            <div class="page-header">
-              <h1>Your Competitions</h1>
-            </div>
-            
-            <canvas id="income" width="300" height="200"></canvas>
-            
-            
-            
-        </center>
-        
-        
-        
 
-        
-        
-    </body>
-    
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Start Bootstrap
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Shortcuts</a>
+                </li>
+                <li>
+                    <a href="#">Overview</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Simple Sidebar</h1>
+                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                        <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
     <script>
-        
-        /*DONUT GRAPH*/
-        var donutData = [
-            {
-                value: 24,
-                color:"#C2F6C9",
-                label: "Points to go"
-            },
-            {
-                value : 176,
-                color : "#5DD46D",
-                label: "Current Score"
-            }
-        ];
-        
-        var donutOptions = {
-            segmentShowStroke : false,
-            animateScale : true,  
-        }
-        
-        var countries= document.getElementById("countries").getContext("2d");
-        new Chart(countries).Doughnut(donutData, donutOptions);
-        /**********************/
-        
-        var barData = {
-            labels : ["Adam","Ryan","Michael"],
-            datasets : [
-                {
-                    fillColor : "#77CAF3",
-                    strokeColor : "#4D9DC4",
-                    data : [9513,6266,8427]
-                }
-
-            ]
-        }
-        
-    
-        var income = document.getElementById("income").getContext("2d");
-        new Chart(income).Bar(barData);
-        
-        
-        
-        
-        
-        
-
-        
-        
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
     </script>
+
+</body>
+
+</html>
 </html>
