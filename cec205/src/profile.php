@@ -39,11 +39,10 @@ $gender = $userData['user']['gender'];
 $heightInches = round($userData['user']['height'] * 0.393701);
 $weight = intval($userData['user']['weight'] * 2.20462);
 $age = $userData['user']['age'];
+$avatar = $userData['user']['avatar150'];
 
 $heightString = (intval($heightInches/12)).'\' '.($heightInches%12).'"';
-
 $bmi = intval(($weight/($heightInches*$heightInches))*703);
-
 
 ?>
 
@@ -104,7 +103,7 @@ $bmi = intval(($weight/($heightInches*$heightInches))*703);
             <h3 class="panel-title" id="nameLabel" style="font-size: 30px; color:#404040;"><center><b><?php echo $name; ?>, <?php echo $age; ?></b></center></h3>
         </div>
         <div class="panel-body">
-            <center><img class="img-circle" style="max-width: 50%; max-height: 50%" src="http://bit.ly/1U4dF6H"></center>
+            <center><img class="img-circle" style="max-width: 50%; max-height: 50%" src="<?php echo $avatar; ?>"></center>
             <br>
             <ul class="list-group" style="font-size: 20px">
                 

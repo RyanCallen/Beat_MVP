@@ -78,6 +78,33 @@ else {
 }
 $leadDiv.='</p>';
 
+switch(true) {
+    case ($sunScore >= 400):
+        $discount = 5;
+        $sunScoreMessage = 'You have the maximum discount!';
+        $max = 400;
+        break;
+    case ($sunScore >= 350):
+        $discount = 4;
+        $sunScoreMessage = 'Raise your SunScore '.(400 - $sunScore).' points to get a 5% discount!';
+        $max = 400;
+        break;
+    case ($sunScore >= 300):
+        $discount = 3;
+        $sunScoreMessage = 'Raise your SunScore '.(350 - $sunScore).' points to get a 4% discount!';
+        $max = 350;
+        break;
+    case ($sunScore >= 250):
+        $discount = 2;
+        $sunScoreMessage = 'Raise your SunScore '.(300 - $sunScore).' points to get a 3% discount!';
+        $max = 300;
+        break;
+    default:
+        $discount = 0;
+        $sunScoreMessage = 'Raise your SunScore '.(250 - $sunScore).' points to get a 2% discount!';
+        $max = 250;
+}
+
 $barData = '{
             labels : ["You","Kyle", "Karen","Joe"],
             datasets : [
@@ -151,6 +178,15 @@ echo "\n\n";
               <h1>SunScore Progress <small>Current Score: <b><?php echo $sunScore; ?></b></small></h1>
             </div>
             <canvas id="countries" height="200px" width="300px"></canvas>
+
+            <div class="sunscore-message">
+                <center>
+                    <p>You've saved:</p>
+                    <h1><?php echo $discount; ?>%</h1>
+                    <p>On your life insurance next month</p>
+                    <p><?php echo $sunScoreMessage; ?></p>
+                </center>
+            </div>
             
             <div class="page-header">
               <h1>Your Competitions</h1>
@@ -200,7 +236,7 @@ echo "\n\n";
         /*DONUT GRAPH*/
         var donutData = [
             {
-                value: <?php echo (300 - $sunScore); ?>,
+                value: <?php echo ($max - $sunScore); ?>,
                 color:"#C2F6C9",
                 label: "Points to go"
             },
