@@ -27,16 +27,6 @@ $provider = new Fitbit([
 // to Psr\Http\Message\RequestInterface.
 
 
-$date = date("Y-m-d");
-$request = $provider->getAuthenticatedRequest(
-    'GET',
-    "https://api.fitbit.com/1/user/-/activities/date/$date.json",
-    $accessToken
-);
-// Make the authenticated API request and get the response.
-$activity = $provider->getResponse($request);
-//var_dump($activity);
-echo "\n\n";
 
 $request = $provider->getAuthenticatedRequest(
     'GET',
@@ -69,14 +59,14 @@ $sunScore = intval(($weeklySteps/10)/$bmi);
 $kyleSteps = 57340;
 $karenSteps = 49126;
 $joeSteps = 73072;
-$leadDiv = '<p>';
+$leadDiv = "";
 if($weeklySteps > $joeSteps) {
     $leadDiv.='Congratulations, you\'re in lead this week. Keep it up!';
 }
 else {
-    $leadDiv.='Step it up! You\'re '.($joeSteps - $weeklySteps).' steps from the lead!';
+    $leadDiv.='You\'re '.($joeSteps - $weeklySteps).' steps from the lead!';
 }
-$leadDiv.='</p>';
+
 
 switch(true) {
     case ($sunScore >= 400):
@@ -175,28 +165,37 @@ echo "\n\n";
         
         <center>
             <div class="page-header" style="margin-top: 70px;">
-              <h1>SunScore Progress <small>Current Score: <b><?php echo $sunScore; ?></b></small></h1>
+              <h1 style="text-shadow: 2px 2px #f2f2f2">SunScore Progress <small>Current Score: <b><?php echo $sunScore; ?></b></small></h1>
             </div>
             <canvas id="countries" height="200px" width="300px"></canvas>
-
-            <div class="sunscore-message">
-                <center>
-                    <p>You've saved:</p>
-                    <h1><?php echo $discount; ?>%</h1>
-                    <p>On your life insurance next month</p>
-                    <p><?php echo $sunScoreMessage; ?></p>
-                </center>
+            
+            <br><br>
+            <div class="panel panel-default" style="background-color: #ffa64d; max-width: 90%; box-shadow: 2px 2px 5px #d9d9d9">
+                <div class="panel-body">
+                    <span><i class="fa fa-check-circle-o pull-left" style="font-size: 50px; color: white; text-shadow: 2px 2px #994d00"></i></span>
+                    <p class="pull-left" style="font-size: 25px; font-weight: bold; padding-top: 10px; padding-left: 5px">You've saved <?php echo $discount; ?>%</p>
+                    <p class="pull-left" style="font-size: 15px; font-weight: bold; padding-top: 5px; padding-left: 35px">On your life insurance this month</p>
+                    <p class="pull-left" style="font-size: 15px; font-weight: bold; padding-top: 5px; padding-left: 5px; color: white; text-shadow: 2px 2px 10px #994d00"><?php echo $sunScoreMessage; ?></p>
+                </div>
             </div>
             
             <div class="page-header">
-              <h1>Your Competitions</h1>
+              <h1 style="text-shadow: 2px 2px #f2f2f2">Your Competitions</h1>
             </div>
 
             
             <canvas id="income" width="300" height="200"></canvas>
+            
+            <br><br>
+            
+            <div class="panel panel-default" style="background-color: #ffa64d; max-width: 90%; box-shadow: 2px 2px 5px #d9d9d9">
+                <div class="panel-body">
+                    <span><i class="fa fa-thumbs-o-up pull-left" style="font-size: 50px; color: white; text-shadow: 2px 2px #994d00"></i></span>
+                    <p class="pull-left" style="font-size: 25px; font-weight: bold; padding-top: 10px; padding-left: 35px">Step it up!</p>
+                    <p class="pull-left" style="font-size: 19px; font-weight: bold; padding-top: 5px; padding-left: 0px; color: white; text-shadow: 2px 2px 10px #994d00"><?php echo $leadDiv ?></p>
+                </div>
+            </div>
 
-
-            <br><br><b><?php echo $leadDiv ?></b><br>
         </center>
         
         <div class="container">
@@ -249,7 +248,15 @@ echo "\n\n";
         
         var donutOptions = {
             segmentShowStroke : false,
-            animateScale : true,  
+            animateScale : true,
+            tooltipFontSize: 30,
+            tooltipTitleFontSize: 14
+        }
+        
+        var barOptions = {
+            tooltipFontSize: 25,
+            tooltipTitleFontSize: 14
+        
         }
         
         var countries= document.getElementById("countries").getContext("2d");
@@ -260,7 +267,7 @@ echo "\n\n";
         
     
         var income = document.getElementById("income").getContext("2d");
-        new Chart(income).Bar(barData);
+        new Chart(income).Bar(barData, barOptions);
         
  
     </script>
