@@ -27,17 +27,6 @@ $provider = new Fitbit([
 // to Psr\Http\Message\RequestInterface.
 
 
-$date = date("Y-m-d");
-$request = $provider->getAuthenticatedRequest(
-    'GET',
-    "https://api.fitbit.com/1/user/-/activities/date/$date.json",
-    $accessToken
-);
-// Make the authenticated API request and get the response.
-$activity = $provider->getResponse($request);
-//var_dump($activity);
-echo "\n\n";
-
 $request = $provider->getAuthenticatedRequest(
     'GET',
     "https://api.fitbit.com/1/user/-/activities/steps/date/today/1w.json",
@@ -64,17 +53,46 @@ $gender = $userData['user']['gender'];
 $heightMeters = $userData['user']['height']/100;
 $weight = $userData['user']['weight'];
 
+$request = $provider->getAuthenticatedRequest(
+    'GET',
+    'https://api.fitbit.com/1/user/-/friends/leaderboard.json',
+    $accessToken
+);
+// Make the authenticated API request and get the response.
+$friends = $provider->getResponse($request);
+
 $bmi = $weight/($heightMeters*$heightMeters);
 $sunScore = intval(($weeklySteps/10)/$bmi);
 $kyleSteps = 57340;
 $karenSteps = 49126;
 $joeSteps = 73072;
+
+$barDataFriends = 0;
+$labels = '';
+$data = '';
+$leadSteps = 0;
+foreach($friends['friends'] as $friend) {
+    if($barDataFriends < 5) {
+        $labels.= ('"'.$friend['user']["displayName"].'",');
+        $data.= ('"'.$friend['summary']['steps'].'",');
+        $barDataFriends++;
+        if($leadSteps == 0) {
+            $leadSteps = $friend['summary']['steps'];
+        }
+    }
+    else {
+        break;
+    }
+}
+rtrim($labels, ",");
+rtrim($data, ",");
+
 $leadDiv = '<p>';
-if($weeklySteps > $joeSteps) {
+if($weeklySteps >= $joeSteps) {
     $leadDiv.='Congratulations, you\'re in lead this week. Keep it up!';
 }
 else {
-    $leadDiv.='Step it up! You\'re '.($joeSteps - $weeklySteps).' steps from the lead!';
+    $leadDiv.='Step it up! You\'re '.($leadSteps - $weeklySteps).' steps from the lead!';
 }
 $leadDiv.='</p>';
 
@@ -106,12 +124,12 @@ switch(true) {
 }
 
 $barData = '{
-            labels : ["You","Kyle", "Karen","Joe"],
+            labels : ['.$labels.'],
             datasets : [
                 {
                     fillColor : "#77CAF3",
                     strokeColor : "#4D9DC4",
-                    data : ['.$weeklySteps.','.$kyleSteps.','.$karenSteps.','.$joeSteps.']
+                    data : ['.$data.']
                 }
 
             ]
@@ -172,7 +190,6 @@ echo "\n\n";
             </div>
 
         </nav>
-        
         <center>
             <div class="page-header" style="margin-top: 70px;">
               <h1>SunScore Progress <small>Current Score: <b><?php echo $sunScore; ?></b></small></h1>
@@ -191,7 +208,6 @@ echo "\n\n";
             <div class="page-header">
               <h1>Your Competitions</h1>
             </div>
-
             
             <canvas id="income" width="300" height="200"></canvas>
 
