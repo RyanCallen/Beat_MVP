@@ -22,11 +22,6 @@ $provider = new Fitbit([
 ]);
 
 
-// The provider provides a way to get an authenticated API request for
-// the service, using the access token; it returns an object conforming
-// to Psr\Http\Message\RequestInterface.
-
-
 $request = $provider->getAuthenticatedRequest(
     'GET',
     "https://api.fitbit.com/1/user/-/activities/steps/date/today/1w.json",
@@ -63,9 +58,6 @@ $friends = $provider->getResponse($request);
 
 $bmi = $weight/($heightMeters*$heightMeters);
 $sunScore = intval(($weeklySteps/10)/$bmi);
-$kyleSteps = 57340;
-$karenSteps = 49126;
-$joeSteps = 73072;
 
 $barDataFriends = 0;
 $labels = '';
@@ -87,14 +79,14 @@ foreach($friends['friends'] as $friend) {
 rtrim($labels, ",");
 rtrim($data, ",");
 
-$leadDiv = '<p>';
-if($weeklySteps >= $joeSteps) {
+$leadDiv = '';
+if($weeklySteps >= $leadSteps) {
     $leadDiv.='Congratulations, you\'re in lead this week. Keep it up!';
 }
 else {
-    $leadDiv.='Step it up! You\'re '.($leadSteps - $weeklySteps).' steps from the lead!';
+    $leadDiv.='You\'re '.($leadSteps - $weeklySteps).' steps from the lead!';
 }
-$leadDiv.='</p>';
+
 
 switch(true) {
     case ($sunScore >= 400):
@@ -140,144 +132,161 @@ echo "\n\n";
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>BEAT</title>
+<head>
+    <title>BEAT</title>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <meta charset=utf-8 />
-        
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-        
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset=utf-8 />
 
-        <script src='Chart.min.js'></script>
-        
-    </head>
-    
-    <body>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-    <nav class = "navbar navbar-default navbar-fixed-top" role = "navigation">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-            <div class = "navbar-header">
-                <button type = "button" class = "navbar-toggle" 
-                 data-toggle = "collapse" data-target = "#example-navbar-collapse">
-                    <span class = "icon-bar"></span>
-                    <span class = "icon-bar"></span>
-                    <span class = "icon-bar"></span>
-                </button>
-
-                <a class = "navbar-brand" href = "#">BEAT <i class="fa fa-heartbeat" style="color:#B63131"></i></a>
-            </div>
-
-            <div class = "collapse navbar-collapse" id = "example-navbar-collapse">
-
-                <ul class = "nav navbar-nav">
-                    <li class = "active"><a href="#"><b><i class="fa fa-dashboard"> </i></b> Dashboard</a></li>
-                    <li><a href="<?php echo "profile.php?accessToken=".$accessToken ?>"><b><i class="fa fa-user"> </i></b> My Profile</a></li>
-                    <li><a href = "#"><b><i class="fa fa-gear"> </i></b> Settings</a></li>
-                    <li><a href = "#"><b><i class="fa fa-sign-out"> </i></b> Log Out (<?php echo $name; ?>)</a></li>
-
-                </ul>
-            </div>
-
-        </nav>
-        <center>
-            <div class="page-header" style="margin-top: 70px;">
-              <h1>SunScore Progress <small>Current Score: <b><?php echo $sunScore; ?></b></small></h1>
-            </div>
-            <canvas id="countries" height="200px" width="300px"></canvas>
-
-            <div class="sunscore-message">
-                <center>
-                    <p>You've saved:</p>
-                    <h1><?php echo $discount; ?>%</h1>
-                    <p>On your life insurance next month</p>
-                    <p><?php echo $sunScoreMessage; ?></p>
-                </center>
-            </div>
-            
-            <div class="page-header">
-              <h1>Your Competitions</h1>
-            </div>
-            
-            <canvas id="income" width="300" height="200"></canvas>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 
-            <br><br><b><?php echo $leadDiv ?></b><br>
-        </center>
-        
-        <div class="container">
+    <script src='Chart.min.js'></script>
+
+</head>
+
+<body>
+
+<nav class = "navbar navbar-default navbar-fixed-top" role = "navigation">
+
+    <div class = "navbar-header">
+        <button type = "button" class = "navbar-toggle"
+                data-toggle = "collapse" data-target = "#example-navbar-collapse">
+            <span class = "icon-bar"></span>
+            <span class = "icon-bar"></span>
+            <span class = "icon-bar"></span>
+        </button>
+
+        <a class = "navbar-brand" href = "#">BEAT <i class="fa fa-heartbeat" style="color:#B63131"></i></a>
+    </div>
+
+    <div class = "collapse navbar-collapse" id = "example-navbar-collapse">
+
+        <ul class = "nav navbar-nav">
+            <li class = "active"><a href="#"><b><i class="fa fa-dashboard"> </i></b> Dashboard</a></li>
+            <li><a href="<?php echo "profile.php?accessToken=".$accessToken ?>"><b><i class="fa fa-user"> </i></b> My Profile</a></li>
+            <li><a href = "#"><b><i class="fa fa-gear"> </i></b> Settings</a></li>
+            <li><a href = "#"><b><i class="fa fa-sign-out"> </i></b> Log Out (<?php echo $name; ?>)</a></li>
+
+        </ul>
+    </div>
+
+</nav>
+<center>
+    <div class="page-header" style="margin-top: 70px;">
+        <h1 style="text-shadow: 2px 2px #f2f2f2">SunScore Progress <small>Current Score: <b><?php echo $sunScore; ?></b></small></h1>
+    </div>
+    <canvas id="countries" height="200px" width="300px"></canvas>
+
+    <br><br>
+    <div class="panel panel-default" style="background-color: #ffa64d; max-width: 90%; box-shadow: 2px 2px 5px #d9d9d9">
+        <div class="panel-body">
+            <span><i class="fa fa-check-circle-o pull-left" style="font-size: 50px; color: white; text-shadow: 2px 2px #994d00"></i></span>
+            <p class="pull-left" style="font-size: 25px; font-weight: bold; padding-top: 10px; padding-left: 5px">You've saved <?php echo $discount; ?>%</p>
+            <p class="pull-left" style="font-size: 15px; font-weight: bold; padding-top: 5px; padding-left: 35px">On your life insurance this month</p>
+            <p class="pull-left" style="font-size: 15px; font-weight: bold; padding-top: 5px; padding-left: 5px; color: white; text-shadow: 2px 2px 10px #994d00"><?php echo $sunScoreMessage; ?></p>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <h1 style="text-shadow: 2px 2px #f2f2f2">Your Competitions</h1>
+    </div>
+
+    <canvas id="income" width="300" height="200"></canvas>
+
+    <br><br>
+
+    <div class="panel panel-default" style="background-color: #ffa64d; max-width: 90%; box-shadow: 2px 2px 5px #d9d9d9">
+        <div class="panel-body">
+            <span><i class="fa fa-thumbs-o-up pull-left" style="font-size: 50px; color: white; text-shadow: 2px 2px #994d00"></i></span>
+            <p class="pull-left" style="font-size: 25px; font-weight: bold; padding-top: 10px; padding-left: 35px">Step it up!</p>
+            <p class="pull-left" style="font-size: 19px; font-weight: bold; padding-top: 5px; padding-left: 0px; color: white; text-shadow: 2px 2px 10px #994d00"><?php echo $leadDiv ?></p>
+        </div>
+    </div>
+
+</center>
+
+<div class="container">
     <div class="col-lg-4 col-sm-6 text-center">
-    <div class="well">
-        <h4>What's on your mind?</h4>
-    <div class="input-group">
-        <input type="text" id="userComment" class="form-control input-sm chat-input" placeholder="Write your message here..." />
+        <div class="well">
+            <h4>What's on your mind?</h4>
+            <div class="input-group">
+                <input type="text" id="userComment" class="form-control input-sm chat-input" placeholder="Write your message here..." />
 	    <span class="input-group-btn" onclick="addComment()">     
             <a href="#" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-comment"></span> Add Comment</a>
         </span>
+            </div>
+            <hr data-brackets-id="12673">
+            <ul data-brackets-id="12674" id="sortable" class="list-unstyled ui-sortable">
+                <strong class="pull-left primary-font">Joe</strong>
+                <small class="pull-right text-muted">
+                    <span class="glyphicon glyphicon-time"></span>7 mins ago</small>
+                </br>
+                <li class="ui-state-default">About to start my workout... I'll be reaching first place soon!</li>
+                </br>
+                <strong class="pull-left primary-font">Kyle</strong>
+                <small class="pull-right text-muted">
+                    <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
+                </br>
+                <li class="ui-state-default">Wow, I've gotten in a lot more steps today than I thought I would!</li>
+
+            </ul>
+        </div>
     </div>
-    <hr data-brackets-id="12673">
-    <ul data-brackets-id="12674" id="sortable" class="list-unstyled ui-sortable">
-        <strong class="pull-left primary-font">Joe</strong>
-        <small class="pull-right text-muted">
-           <span class="glyphicon glyphicon-time"></span>7 mins ago</small>
-        </br>
-        <li class="ui-state-default">About to start my workout... I'll be reaching first place soon!</li>
-        </br>
-         <strong class="pull-left primary-font">Kyle</strong>
-        <small class="pull-right text-muted">
-           <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
-        </br>
-        <li class="ui-state-default">Wow, I've gotten in a lot more steps today than I thought I would!</li>
-        
-    </ul>
-    </div>
-</div>
 
 
-    </body>
-    
-    <script>
-        
-        /* NOTE, FILL THESE CHARTS WITH DATA FROM THE RESPONSE IN NEXT ITERATION */
-        /*DONUT GRAPH*/
-        var donutData = [
-            {
-                value: <?php echo ($max - $sunScore); ?>,
-                color:"#C2F6C9",
-                label: "Points to go"
-            },
-            {
-                value : <?php echo $sunScore; ?>,
-                color : "#5DD46D",
-                label: "Current Score"
-            }
-        ];
-        
-        var donutOptions = {
-            segmentShowStroke : false,
-            animateScale : true,  
+</body>
+
+<script>
+
+    /* NOTE, FILL THESE CHARTS WITH DATA FROM THE RESPONSE IN NEXT ITERATION */
+    /*DONUT GRAPH*/
+    var donutData = [
+        {
+            value: <?php echo ($max - $sunScore); ?>,
+            color:"#C2F6C9",
+            label: "Points to go"
+        },
+        {
+            value : <?php echo $sunScore; ?>,
+            color : "#5DD46D",
+            label: "Current Score"
         }
-        
-        var countries= document.getElementById("countries").getContext("2d");
-        new Chart(countries).Doughnut(donutData, donutOptions);
-        /**********************/
-        
-        var barData = <?php echo $barData ?>;
-        
-    
-        var income = document.getElementById("income").getContext("2d");
-        new Chart(income).Bar(barData);
-        
- 
-    </script>
+    ];
+
+    var donutOptions = {
+        segmentShowStroke : false,
+        animateScale : true,
+        tooltipFontSize: 30,
+        tooltipTitleFontSize: 14
+    }
+
+    var barOptions = {
+        tooltipFontSize: 25,
+        tooltipTitleFontSize: 14
+
+    }
+
+    var countries= document.getElementById("countries").getContext("2d");
+    new Chart(countries).Doughnut(donutData, donutOptions);
+    /**********************/
+
+    var barData = <?php echo $barData ?>;
+
+
+    var income = document.getElementById("income").getContext("2d");
+    new Chart(income).Bar(barData, barOptions);
+
+
+</script>
 </html>
