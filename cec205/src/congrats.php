@@ -63,19 +63,30 @@ $barDataFriends = 0;
 $labels = '';
 $data = '';
 $leadSteps = 0;
-foreach($friends['friends'] as $friend) {
-    if($barDataFriends < 5) {
-        $labels.= ('"'.$friend['user']["displayName"].'",');
-        $data.= ('"'.$friend['summary']['steps'].'",');
-        $barDataFriends++;
-        if($leadSteps == 0) {
-            $leadSteps = $friend['summary']['steps'];
+$userIncluded = false;
+if(sizeof($friends['friends']) > 1) {
+    foreach($friends['friends'] as $friend) {
+        if($barDataFriends < 5) {
+            $labels.= ('"'.$friend['user']["displayName"].'",');
+            $data.= ('"'.$friend['summary']['steps'].'",');
+            $barDataFriends++;
+            if($leadSteps == 0) {
+                $leadSteps = $friend['summary']['steps'];
+            }
+            if($friend['user']["displayName"] === $name) {
+                $userIncluded = true;
+            }
+        }
+        else {
+            break;
         }
     }
-    else {
-        break;
+    if($userIncluded == false) {
+        $labels.= ('"'.$name.'",');
+        $data.= ('"'.$weeklySteps.'",');
     }
 }
+
 rtrim($labels, ",");
 rtrim($data, ",");
 
@@ -127,7 +138,51 @@ $barData = '{
             ]
         }';
 
-echo "\n\n";
+$request = $provider->getAuthenticatedRequest(
+    'GET',
+    'https://api.fitbit.com/1/user/-/sleep/minutesAsleep/date/today/1w.json',
+    $accessToken
+);
+// Make the authenticated API request and get the response.
+$sleep = $provider->getResponse($request);
+
+$sleepValues = [];
+foreach($sleep["sleep-minutesAsleep"] as $night) {
+    if(intval($night['value']) != 0) {
+        $sleepValues[] = intval($night['value']);
+    }
+}
+var_dump($sleepValues);
+if(sizeof($sleepValues) != 0){
+    $sleepAvg = array_sum($sleepValues)/sizeof($sleepValues);
+}
+else {
+    $sleepAvg = 0;
+}
+$sleepHours = convertToHoursMins($sleepAvg);
+$sleepDiv = "";
+switch(true) {
+    case $sleepAvg == 0:
+        $sleepDiv .= "To get sleep quality information, use your Fitbit tracker to monitor your sleep";
+        break;
+    case $sleepAvg > 540:
+        $sleepDiv .= "Your average time slept this week ($sleepHours) is above the recommended sleep amount. You might want to consider sleeping less!";
+        break;
+    case $sleepAvg > 420:
+        $sleepDiv .= "Your average time slept this week ($sleepHours) is a healthy sleep amount. Keep it up!";
+        break;
+    default:
+        $sleepDiv .= "Your average time slept this week ($sleepHours) is below the recommended sleep amount. Try to get more rest!";
+}
+
+function convertToHoursMins($time, $format = '%d hours and %d minutes') {
+    if ($time < 1) {
+        return 0;
+    }
+    $hours = floor($time / 60);
+    $minutes = ($time % 60);
+    return sprintf($format, $hours, $minutes);
+}
 ?>
 
 <!DOCTYPE html>
@@ -202,7 +257,18 @@ echo "\n\n";
             <h1 style="text-shadow: 2px 2px #f2f2f2">Your Competitions</h1>
         </div>
 
-        <canvas id="income" width="300" height="200"></canvas>
+        <?php
+            if(sizeof($friends['friends']) > 1) {
+                echo "<canvas id=\"income\" width=\"300\" height=\"200\"></canvas>";
+            }
+            else {
+                echo "
+                    <div class=\"page-header\">
+                        <h2 style=\"text-shadow: 2px 2px #f2f2f2\">Add friends on Fitbit to get enter weekly competitions!</h2>
+                    </div>
+                ";
+            }
+        ?>
 
         <br><br>
 
@@ -214,36 +280,51 @@ echo "\n\n";
             </div>
         </div>
 
+        <div class="panel panel-default" style="background-color: #9999FF; max-width: 90%; box-shadow: 2px 2px 5px #d9d9d9">
+            <div class="panel-body">
+                <span><i class="fa fa-bed pull-left" style="font-size: 50px; color: white; text-shadow: 2px 2px #994d00"></i></span>
+                <p class="pull-left" style="font-size: 25px; font-weight: bold; padding-top: 10px; padding-left: 35px"><?php echo $sleepDiv ?></p>
+            </div>
+        </div>
+
     </center>
 
 
-    <div class="container">
-        <div class="col-lg-4 col-sm-6 text-center">
-            <div class="well">
-                <h4>What's on your mind?</h4>
-                <div class="input-group">
-                    <input type="text" id="userComment" class="form-control input-sm chat-input" placeholder="Write your message here..." />
-            <span class="input-group-btn" onclick="addComment()">     
-                <a href="#" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-comment"></span> Add Comment</a>
-            </span>
+
+        <?php
+            if(sizeof($friends['friends']) > 2) {
+                echo "
+                <div class=\"container\">
+                <div class=\"col-lg-4 col-sm-6 text-center\">
+                     <div class=\"well\">
+                    <h4>What's on your mind?</h4>
+                    <div class=\"input-group\">
+                    <input type=\"text\" id=\"userComment\" class=\"form-control input-sm chat-input\" placeholder=\"Write your message here...\" />
+                    <span class=\"input-group-btn\" onclick=\"addComment()\">
+                        <a href=\"#\" class=\"btn btn-primary btn-sm\"><span class=\"glyphicon glyphicon-comment\"></span> Add Comment</a>
+                    </span>
                 </div>
-                <hr data-brackets-id="12673">
-                <ul data-brackets-id="12674" id="sortable" class="list-unstyled ui-sortable">
-                    <strong class="pull-left primary-font">Joe</strong>
-                    <small class="pull-right text-muted">
-                        <span class="glyphicon glyphicon-time"></span>7 mins ago</small>
+                <hr data-brackets-id=\"12673\">
+                <ul data-brackets-id=\"12674\" id=\"sortable\" class=\"list-unstyled ui-sortable\">
+                    <strong class=\"pull-left primary-font\">".$friends['friends'][0]['user']["displayName"]."</strong>
+                    <small class=\"pull-right text-muted\">
+                        <span class=\"glyphicon glyphicon-time\"></span>7 mins ago</small>
                     </br>
-                    <li class="ui-state-default">About to start my workout... I'll be reaching first place soon!</li>
+                    <li class=\"ui-state-default\">I'm finally in first. Good luck catching up!</li>
                     </br>
-                    <strong class="pull-left primary-font">Kyle</strong>
-                    <small class="pull-right text-muted">
-                        <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
+                    <strong class=\"pull-left primary-font\">".$friends['friends'][1]['user']["displayName"]."</strong>
+                    <small class=\"pull-right text-muted\">
+                        <span class=\"glyphicon glyphicon-time\"></span>14 mins ago</small>
                     </br>
-                    <li class="ui-state-default">Wow, I've gotten in a lot more steps today than I thought I would!</li>
+                    <li class=\"ui-state-default\">Wow, I've gotten in a lot more steps today than I thought I would!</li>
 
                 </ul>
-            </div>
-        </div>
+                </div>
+                </div>
+            ";
+            }
+            // Else don't show the message board
+        ?>
 
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
