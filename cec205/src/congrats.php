@@ -130,8 +130,8 @@ $barData = '{
             labels : ['.$labels.'],
             datasets : [
                 {
-                    fillColor : "#77CAF3",
-                    strokeColor : "#4D9DC4",
+                    fillColor : "#ffd480",
+                    strokeColor : "#ffd480",
                     data : ['.$data.']
                 }
 
@@ -238,23 +238,23 @@ function convertToHoursMins($time, $format = '%d hours and %d minutes') {
 
     </nav>
     <center>
-        <div class="page-header" style="margin-top: 70px;">
+        <div class="page-header" style="margin-top: 50px;">
             <h1 style="text-shadow: 2px 2px #f2f2f2">SunScore Progress <small>Current Score: <b><?php echo $sunScore; ?></b></small></h1>
         </div>
         <canvas id="countries" height="200px" width="300px"></canvas>
 
         <br><br>
-        <div class="panel panel-default" style="background-color: #ffa64d; max-width: 90%; box-shadow: 2px 2px 5px #d9d9d9">
+        <div class="panel panel-default" style="background-color: #389076; max-width: 90%; box-shadow: 2px 2px 5px #d9d9d9; padding: 2px;">
             <div class="panel-body">
-                <span><i class="fa fa-check-circle-o pull-left" style="font-size: 50px; color: white; text-shadow: 2px 2px #994d00"></i></span>
-                <p class="pull-left" style="font-size: 25px; font-weight: bold; padding-top: 10px; padding-left: 5px">You've saved <?php echo $discount; ?>%</p>
-                <p class="pull-left" style="font-size: 15px; font-weight: bold; padding-top: 5px; padding-left: 35px">On your life insurance this month</p>
-                <p class="pull-left" style="font-size: 15px; font-weight: bold; padding-top: 5px; padding-left: 5px; color: white; text-shadow: 2px 2px 10px #994d00"><?php echo $sunScoreMessage; ?></p>
+                
+                <p class="text-center" style="font-size: 25px; font-weight: bold; color:#86C3B1; text-shadow: 2px 2px 5px black"><i class="fa fa-money" style="font-size: 25px"></i> You've saved <?php echo $discount; ?>%</p>
+                <p class="text-center" style="font-size: 18px; font-weight: bold; color:white; text-shadow: 1px 1px 5px #1d493c">On your life insurance this month</p>
+                <p class="text-center" style="font-size: 15px; font-weight: bold; color:white; text-shadow: 1px 1px 5px #1d493c"><?php echo $sunScoreMessage; ?></p>
             </div>
         </div>
 
         <div class="page-header">
-            <h1 style="text-shadow: 2px 2px #f2f2f2">Your Competitions</h1>
+            <h2 style="text-shadow: 2px 2px #f2f2f2">Your Competitions</h>
         </div>
 
         <?php
@@ -272,27 +272,22 @@ function convertToHoursMins($time, $format = '%d hours and %d minutes') {
 
         <br><br>
 
-        <div class="panel panel-default" style="background-color: #ffa64d; max-width: 90%; box-shadow: 2px 2px 5px #d9d9d9">
+        <div class="panel panel-default" style="background-color: #86C3B1; max-width: 90%; box-shadow: 2px 2px 5px #d9d9d9;">
             <div class="panel-body">
-                <span><i class="fa fa-thumbs-o-up pull-left" style="font-size: 50px; color: white; text-shadow: 2px 2px #994d00"></i></span>
-                <p class="pull-left" style="font-size: 25px; font-weight: bold; padding-top: 10px; padding-left: 35px">Step it up!</p>
-                <p class="pull-left" style="font-size: 19px; font-weight: bold; padding-top: 5px; padding-left: 0px; color: white; text-shadow: 2px 2px 10px #994d00"><?php echo $leadDiv ?></p>
+                <p class="text-center" style="font-size: 25px; font-weight: bold; color: #ddeee9; text-shadow: 2px 2px 5px black"><i class="fa fa-thumbs-up"></i> Step it up!</p>
+                <p class="text-center" style="font-size: 19px; font-weight: bold;"><?php echo $leadDiv ?></p>
             </div>
         </div>
 
-        <div class="panel panel-default" style="background-color: #9999FF; max-width: 90%; box-shadow: 2px 2px 5px #d9d9d9">
+        <div class="panel panel-default" style="background-color: #223c44; max-width: 90%; box-shadow: 2px 2px 5px #d9d9d9">
             <div class="panel-body">
-                <span><i class="fa fa-bed pull-left" style="font-size: 50px; color: white; text-shadow: 2px 2px #994d00"></i></span>
-                <p class="pull-left" style="font-size: 25px; font-weight: bold; padding-top: 10px; padding-left: 35px"><?php echo $sleepDiv ?></p>
+                <p class="text-center" style="font-size: 25px; font-weight: bold; color: white; text-shadow: 2px 2px 5px #1a2d33"><i class="fa fa-moon-o"></i> Rise and Shine!</p>
+                <p class="text-center" style="font-size: 15px; font-weight: bold; color: white"><?php echo $sleepDiv ?></p>
             </div>
         </div>
-
-    </center>
-
-
 
         <?php
-            if(sizeof($friends['friends']) > 2) {
+            if(sizeof($friends['friends']) >= 2) {
                 echo "
                 <div class=\"container\">
                 <div class=\"col-lg-4 col-sm-6 text-center\">
@@ -325,6 +320,7 @@ function convertToHoursMins($time, $format = '%d hours and %d minutes') {
             }
             // Else don't show the message board
         ?>
+        </center>
 
     <!-- Modal -->
     <div id="myModal" class="modal fade" role="dialog">
@@ -365,10 +361,12 @@ function convertToHoursMins($time, $format = '%d hours and %d minutes') {
 
 <script>
 
+    /*
     //opens the modal when page loads
     $(window).load(function(){
         $('#myModal').modal('show');
     });
+    */
 
     
 
@@ -390,13 +388,16 @@ function convertToHoursMins($time, $format = '%d hours and %d minutes') {
     var donutOptions = {
         segmentShowStroke : false,
         animateScale : true,
-        tooltipFontSize: 30,
+        tooltipFontSize: 20,
         tooltipTitleFontSize: 14
     }
 
     var barOptions = {
-        tooltipFontSize: 25,
-        tooltipTitleFontSize: 14
+        tooltipFontSize: 20,
+        tooltipTitleFontSize: 14,
+        scaleLabel: function (valuePayload) {
+            return Number(valuePayload.value)/1000 + 'k Steps';
+        }
 
     }
 
