@@ -361,12 +361,12 @@ function convertToHoursMins($time, $format = '%d hours and %d minutes') {
 
 <script>
 
-    /*
+  
     //opens the modal when page loads
     $(window).load(function(){
         $('#myModal').modal('show');
     });
-    */
+    
 
     
 
